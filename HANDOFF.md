@@ -25,14 +25,21 @@
 | Сессия | https://app.devin.ai/sessions/bbf1cec713be43a7b227177d3207df11 |
 | Модель | Agent |
 | Дата | 2026-05-10 (UTC) |
-| Закрытая задача | T-005 |
-| Следующая задача | **T-006** (см. TASKS.md) |
+| Закрытая задача | T-006 |
+| Следующая задача | **T-007** (см. TASKS.md) |
 | Состояние master | ожидает merge PR |
 | Pages | включён, master/root |
 
 ---
 
 ## Лог смен (новые записи СВЕРХУ)
+
+### 2026-05-10 · paharaduga-beep · T-006
+
+- Закрыто: T-006 — data/locas.json (14 лок плотностей) + tools/build_locas.py
+- 14 лок: 7 верхних (Сатья — Бхур) + 7 нижних (Атала — Патала)
+- Поля: id, name, density, description
+- Источник: AWARA_Vedic_Cosmogenesis_Ultimate.txt, AWARA_Full_Lore_Raw_Complete.txt
 
 ### 2026-05-10 · paharaduga-beep · T-005
 
