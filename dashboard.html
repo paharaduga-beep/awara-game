@@ -113,6 +113,24 @@ body{
   margin-top:12px;font-size:9px;
   color:var(--text-mute);letter-spacing:0.2em;
 }
+.hero-agent{
+  margin-top:14px;
+  padding:10px 16px;
+  border-radius:10px;
+  background:rgba(201,168,76,0.08);
+  border:1px solid rgba(201,168,76,0.18);
+  text-align:center;
+}
+.hero-agent-name{
+  font-family:Cinzel,serif;font-size:13px;
+  color:var(--gold-warm);letter-spacing:0.18em;
+  margin-bottom:4px;
+}
+.hero-agent-cultural{
+  font-family:'Cormorant Garamond',serif;
+  font-size:11px;color:var(--text-soft);
+  letter-spacing:0.05em;
+}
 
 /* ── SECTIONS ── */
 .section{
@@ -384,6 +402,10 @@ body{
     </div>
     <div class="bar"><div class="bar-fill" id="rank-bar" style="width:0%"></div></div>
     <div class="hero-raw" id="hero-progress">— до следующего ранга</div>
+    <div class="hero-agent" id="hero-agent" style="display:none">
+      <div class="hero-agent-name" id="agent-name"></div>
+      <div class="hero-agent-cultural" id="agent-cultural"></div>
+    </div>
   </section>
 
   <!-- ЛИЧНЫЙ ВКЛАД -->
@@ -672,7 +694,27 @@ body{
     });
   }
 
-  // ── 8. Старт ──
+  // ── 8. Агент в hero ──
+  function renderAgent(){
+    var agentSlug = localStorage.getItem('awara_active_agent') || 'svet_ra';
+    var matrixSlug = loadActiveMatrix();
+    Promise.all([
+      fetch('data/agents.json').then(function(r){ return r.json(); }),
+      fetch('data/agent_matrix_map.json').then(function(r){ return r.json(); })
+    ]).then(function(results){
+      var agents = results[0];
+      var mapping = results[1];
+      var agent = agents.find(function(a){ return a.slug === agentSlug; });
+      var entry = mapping.find(function(m){ return m.agent_slug === agentSlug && m.matrix_slug === matrixSlug; });
+      if(agent){
+        document.getElementById('agent-name').textContent = agent.name + ' · ' + agent.domain;
+        document.getElementById('agent-cultural').textContent = entry ? entry.cultural_name + ' (' + entry.matrix_name + ')' : '';
+        document.getElementById('hero-agent').style.display = '';
+      }
+    }).catch(function(err){ console.warn('agent render:', err); });
+  }
+
+  // ── 9. Старт ──
   function init(){
     var state = loadState();
     renderHero(state);
@@ -680,6 +722,7 @@ body{
     renderSpheres(state);
     renderLeaderboard(state);
     renderEvolution(state);
+    renderAgent();
   }
 
   if(document.readyState === 'loading'){
