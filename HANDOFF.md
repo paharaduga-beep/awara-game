@@ -25,14 +25,20 @@
 | Сессия | https://app.devin.ai/sessions/bbf1cec713be43a7b227177d3207df11 |
 | Модель | Agent |
 | Дата | 2026-05-10 (UTC) |
-| Закрытая задача | T-004 |
-| Следующая задача | **T-005** (см. TASKS.md) |
+| Закрытая задача | T-005 |
+| Следующая задача | **T-006** (см. TASKS.md) |
 | Состояние master | ожидает merge PR |
 | Pages | включён, master/root |
 
 ---
 
 ## Лог смен (новые записи СВЕРХУ)
+
+### 2026-05-10 · paharaduga-beep · T-005
+
+- Закрыто: T-005 — data/zones.json (9 Васту-зон) + tools/build_zones.py
+- 9 зон: id, slug, name, direction, element, planet, quality
+- Источник: канон Вастушастра, agents.json (поля vastu_zone)
 
 ### 2026-05-10 · paharaduga-beep · T-004
 
