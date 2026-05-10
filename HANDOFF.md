@@ -25,14 +25,21 @@
 | Сессия | https://app.devin.ai/sessions/bbf1cec713be43a7b227177d3207df11 |
 | Модель | Agent |
 | Дата | 2026-05-10 (UTC) |
-| Закрытая задача | T-004 |
-| Следующая задача | **T-005** (см. TASKS.md) |
+| Закрытая задача | T-008 |
+| Следующая задача | **T-009** (см. TASKS.md) |
 | Состояние master | ожидает merge PR |
 | Pages | включён, master/root |
 
 ---
 
 ## Лог смен (новые записи СВЕРХУ)
+
+### 2026-05-10 · paharaduga-beep · T-008
+
+- Закрыто: T-008 — js/playerState.js минимальный API
+- Функции: getState(), saveState(state), migrate(legacy)
+- Ключ: awara_v258_state (новый), миграция с awara_v255_state
+- Поля: totalLight, sphereData, spirit, elements, activeSystem, journey
 
 ### 2026-05-10 · paharaduga-beep · T-004
 
