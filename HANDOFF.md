@@ -25,14 +25,20 @@
 | Сессия | https://app.devin.ai/sessions/bbf1cec713be43a7b227177d3207df11 |
 | Модель | Agent |
 | Дата | 2026-05-10 (UTC) |
-| Закрытая задача | T-004 |
-| Следующая задача | **T-005** (см. TASKS.md) |
+| Закрытая задача | T-007 |
+| Следующая задача | **T-008** (см. TASKS.md) |
 | Состояние master | ожидает merge PR |
 | Pages | включён, master/root |
 
 ---
 
 ## Лог смен (новые записи СВЕРХУ)
+
+### 2026-05-10 · paharaduga-beep · T-007
+
+- Закрыто: T-007 — data/chakras.json (9 чакр-мер) + tools/build_chakras.py
+- 7 классических чакр (Муладхара — Сахасрара) + Монада (8-я мерность) + Абсолют (9-я)
+- Поля: id, slug, name, sanskrit, position, color, element, mantra_seed
 
 ### 2026-05-10 · paharaduga-beep · T-004
 
