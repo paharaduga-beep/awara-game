@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+"""
+build_chakras.py — генерация data/chakras.json (9 чакр-мер)
+
+Источник: AWARA_Zodiac_and_Chakra_Prompts_Expansion.txt,
+          AWARA_Raw_Chat_History_Part2.txt (Глава 8)
+
+7 классических чакр + 8-я Монада + 9-я Абсолют/Параматман
+
+Запуск: python3 tools/build_chakras.py
+Результат: data/chakras.json
+"""
+
+import json
+import os
+
+CHAKRAS = [
+    {
+        "id": 1,
+        "slug": "muladhara",
+        "name": "Муладхара",
+        "sanskrit": "Muladhara",
+        "position": "Основание позвоночника",
+        "color": "#ff0000",
+        "element": "Земля",
+        "mantra_seed": "LAM"
+    },
+    {
+        "id": 2,
+        "slug": "svadhisthana",
+        "name": "Свадхистхана",
+        "sanskrit": "Svadhisthana",
+        "position": "Крестец",
+        "color": "#ff8800",
+        "element": "Вода",
+        "mantra_seed": "VAM"
+    },
+    {
+        "id": 3,
+        "slug": "manipura",
+        "name": "Манипура",
+        "sanskrit": "Manipura",
+        "position": "Солнечное сплетение",
+        "color": "#ffdd00",
+        "element": "Огонь",
+        "mantra_seed": "RAM"
+    },
+    {
+        "id": 4,
+        "slug": "anahata",
+        "name": "Анахата",
+        "sanskrit": "Anahata",
+        "position": "Сердце",
+        "color": "#00cc44",
+        "element": "Воздух",
+        "mantra_seed": "YAM"
+    },
+    {
+        "id": 5,
+        "slug": "vishuddha",
+        "name": "Вишуддха",
+        "sanskrit": "Vishuddha",
+        "position": "Горло",
+        "color": "#0088ff",
+        "element": "Эфир",
+        "mantra_seed": "HAM"
+    },
+    {
+        "id": 6,
+        "slug": "ajna",
+        "name": "Аджна",
+        "sanskrit": "Ajna",
+        "position": "Межбровье",
+        "color": "#4400cc",
+        "element": "Свет",
+        "mantra_seed": "OM"
+    },
+    {
+        "id": 7,
+        "slug": "sahasrara",
+        "name": "Сахасрара",
+        "sanskrit": "Sahasrara",
+        "position": "Макушка",
+        "color": "#cc00ff",
+        "element": "Сознание",
+        "mantra_seed": "AUM"
+    },
+    {
+        "id": 8,
+        "slug": "monada",
+        "name": "Монада",
+        "sanskrit": "Monad",
+        "position": "8-я мерность",
+        "color": "#ffffff",
+        "element": "Дух",
+        "mantra_seed": "SO-HAM"
+    },
+    {
+        "id": 9,
+        "slug": "absolut",
+        "name": "Абсолют / Параматман",
+        "sanskrit": "Paramatman",
+        "position": "9-я мерность",
+        "color": "#ffd700",
+        "element": "Пустота",
+        "mantra_seed": "Тишина"
+    }
+]
+
+def main():
+    out_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'chakras.json')
+    out_path = os.path.normpath(out_path)
+    with open(out_path, 'w', encoding='utf-8') as f:
+        json.dump(CHAKRAS, f, ensure_ascii=False, indent=2)
+    print(f"chakras.json: {len(CHAKRAS)} chakras -> {out_path}")
+
+if __name__ == '__main__':
+    main()
