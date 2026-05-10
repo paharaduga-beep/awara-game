@@ -25,14 +25,20 @@
 | Сессия | https://app.devin.ai/sessions/bbf1cec713be43a7b227177d3207df11 |
 | Модель | Agent |
 | Дата | 2026-05-10 (UTC) |
-| Закрытая задача | T-003 |
-| Следующая задача | **T-004** (см. TASKS.md) |
+| Закрытая задача | T-004 |
+| Следующая задача | **T-005** (см. TASKS.md) |
 | Состояние master | ожидает merge PR |
 | Pages | включён, master/root |
 
 ---
 
 ## Лог смен (новые записи СВЕРХУ)
+
+### 2026-05-10 · paharaduga-beep · T-004
+
+- Закрыто: T-004 — агент игрока в hero-блоке dashboard.html
+- По умолчанию: Свет Ра (svet_ra), ключ localStorage: awara_active_agent
+- Показывается имя агента + domain + культурное соответствие в активной матрице (из agent_matrix_map.json)
 
 ### 2026-05-10 · paharaduga-beep · T-003
 
