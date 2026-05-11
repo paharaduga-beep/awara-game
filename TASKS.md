@@ -174,6 +174,23 @@
   Файлы: `index.html`, `js/matrixSwitcher.js`
   Est: 15 мин
 
+### Phase 3 — Натальная карта + Оракул
+
+- [x] **T-029 · natal.html: форма ввода натальных данных (UI)**
+  DoD: Новый экран `natal.html` в стиле AWARA. Поля: дата рождения, время рождения, город. Кнопка "СОХРАНИТЬ ДАННЫЕ" сохраняет в `localStorage` (`awara_natal_data`). Placeholder для будущего расчёта (Swiss Ephemeris). Кнопка "НАТАЛЬНАЯ КАРТА" в лобби.
+  Файлы: `natal.html`, `index.html`
+  Est: 10 мин
+
+- [ ] **T-030 · подключить Swiss Ephemeris (JS-порт или FastAPI бекэнд)**
+  DoD: по сохранённым натальным данным рассчитать: 9 планет, 12 домов, лагна, накшатры, аспекты. Результат отображается на natal.html.
+  Файлы: `natal.html`, TBD
+  Est: TBD (зависит от выбора стека)
+
+- [ ] **T-031 · Оракул v0 (LLM-интеграция)**
+  DoD: экран oracle.html с чатом. Системный промпт из лорбука + state игрока. Подключение LLM (Anthropic/OpenAI). Safety-prompt.
+  Файлы: `oracle.html`, `js/oracle.js`
+  Est: TBD (нужен API ключ)
+
 ---
 
 ## Done (закрытые)

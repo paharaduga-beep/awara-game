@@ -21,18 +21,27 @@
 
 | Поле | Значение |
 |---|---|
-| Аккаунт | victorianpieraverdi-dev |
-| Сессия | https://app.devin.ai/sessions/05aaba6831eb4070ab7145c501bb67d3 |
+| Аккаунт | paharaduga-beep |
+| Сессия | https://app.devin.ai/sessions/62b6aff860814728a556d1a69288d140 |
 | Модель | Fast Mode / Sonnet |
 | Дата | 2026-05-11 (UTC) |
-| Закрытая задача | T-027 |
-| Следующая задача | **T-028** (см. TASKS.md) |
-| Состояние master | ожидает merge PR |
+| Закрытая задача | T-029 |
+| Следующая задача | **T-030** (Swiss Ephemeris) или **T-031** (Оракул) |
+| Состояние master | ожидает merge PR #31, #32, #33 |
 | Pages | включён, master/root |
 
 ---
 
 ## Лог смен (новые записи СВЕРХУ)
+
+### 2026-05-11 · paharaduga-beep · T-029
+
+- Закрыто: T-029 — natal.html: форма ввода натальных данных (UI)
+- natal.html: новый экран в стиле AWARA (синий акцент), поля дата/время/город рождения
+- Сохранение в localStorage ключ `awara_natal_data`
+- Placeholder для будущего расчёта (Swiss Ephemeris)
+- index.html: кнопка "НАТАЛЬНАЯ КАРТА" в лобби (после КОЛОДА КАРТ)
+- Phase 3 (Натальная карта + Оракул) добавлена в TASKS.md: T-029, T-030, T-031
 
 ### 2026-05-11 · victorianpieraverdi-dev · T-027
 

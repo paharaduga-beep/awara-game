@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#02010a">
+<title>Натальная Карта · AWARA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#c9a84c;
+  --gold-bright:#ffd700;
+  --gold-light:#fff8d6;
+  --bg:#02010a;
+  --line:rgba(201,168,76,0.18);
+  --text:rgba(255,248,214,0.85);
+  --text-soft:rgba(255,248,214,0.55);
+  --text-mute:rgba(255,255,255,0.35);
+  --accent:rgba(100,160,255,0.9);
+  --accent-dim:rgba(100,160,255,0.35);
+  --accent-bg:rgba(100,160,255,0.06);
+  --accent-line:rgba(100,160,255,0.18);
+}
+html,body{background:var(--bg);color:var(--text);min-height:100vh}
+body{
+  font-family:'JetBrains Mono',monospace;
+  padding:18px 14px 110px;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(100,160,255,0.08), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(80,40,140,0.06), transparent 60%),
+    var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:580px;margin:0 auto}
+
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:24px;gap:8px;
+}
+.back-link{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:9px 14px;min-height:44px;
+  border:1px solid var(--line);border-radius:10px;
+  font-family:Cinzel,serif;font-size:11px;
+  letter-spacing:0.2em;color:var(--text-soft);
+  text-decoration:none;cursor:pointer;transition:all 0.3s;
+}
+.back-link:hover{border-color:var(--gold);color:var(--gold)}
+
+.page-title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(16px,4vw,22px);
+  color:var(--accent);letter-spacing:0.15em;
+  text-align:center;margin-bottom:6px;
+}
+.page-sub{
+  font-size:9px;letter-spacing:0.2em;
+  color:var(--text-mute);text-align:center;margin-bottom:28px;
+}
+
+.natal-card{
+  border:1px solid var(--accent-line);border-radius:14px;
+  padding:clamp(16px,4vw,24px);margin-bottom:16px;
+  background:var(--accent-bg);
+  position:relative;overflow:hidden;
+}
+.natal-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(100,160,255,0.05),transparent 60%);
+  pointer-events:none;
+}
+
+.section-title{
+  font-family:Cinzel,serif;font-size:9px;
+  letter-spacing:0.2em;color:var(--accent-dim);
+  margin-bottom:16px;
+}
+
+.form-group{
+  margin-bottom:16px;
+}
+.form-label{
+  display:block;font-size:9px;letter-spacing:0.12em;
+  color:var(--text-mute);margin-bottom:6px;
+}
+.form-input{
+  width:100%;padding:10px 14px;min-height:44px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(14px,3.5vw,16px);
+  color:var(--text);
+  background:rgba(100,160,255,0.04);
+  border:1px solid var(--accent-line);
+  border-radius:10px;
+  outline:none;transition:all 0.3s;
+}
+.form-input:focus{
+  border-color:var(--accent);
+  background:rgba(100,160,255,0.08);
+  box-shadow:0 0 12px rgba(100,160,255,0.1);
+}
+.form-input::placeholder{
+  color:var(--text-mute);font-style:italic;
+}
+.form-hint{
+  font-size:8px;color:var(--text-mute);
+  margin-top:4px;letter-spacing:0.05em;
+}
+
+.btn-calculate{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:14px 20px;min-height:48px;
+  font-family:Cinzel,serif;font-size:clamp(12px,3vw,14px);
+  letter-spacing:0.2em;
+  color:var(--accent);
+  background:linear-gradient(135deg,rgba(100,160,255,0.08),rgba(80,120,220,0.04));
+  border:1px solid rgba(100,160,255,0.3);
+  border-radius:12px;cursor:pointer;
+  transition:all 0.3s;margin-top:8px;
+}
+.btn-calculate:hover{
+  border-color:rgba(100,160,255,0.6);
+  background:linear-gradient(135deg,rgba(100,160,255,0.16),rgba(80,120,220,0.08));
+  box-shadow:0 0 20px rgba(100,160,255,0.15);
+}
+.btn-calculate:active{transform:scale(0.98)}
+.btn-calculate:disabled{
+  opacity:0.4;cursor:not-allowed;
+}
+
+.saved-badge{
+  display:none;align-items:center;justify-content:center;gap:6px;
+  margin-top:12px;padding:8px 14px;
+  font-size:9px;letter-spacing:0.1em;
+  color:rgba(100,220,160,0.8);
+  background:rgba(100,220,160,0.06);
+  border:1px solid rgba(100,220,160,0.2);
+  border-radius:8px;
+}
+.saved-badge.visible{display:flex}
+
+.result-placeholder{
+  display:none;margin-top:16px;
+  border:1px solid var(--accent-line);border-radius:14px;
+  padding:clamp(16px,4vw,24px);
+  background:var(--accent-bg);text-align:center;
+}
+.result-placeholder.visible{display:block}
+.result-placeholder .section-title{margin-bottom:8px}
+.result-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(13px,3vw,15px);
+  color:var(--text-soft);line-height:1.6;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back-link" href="index.html">&larr; ЛОББИ</a>
+    <div style="font-family:Cinzel,serif;font-size:9px;letter-spacing:0.15em;color:var(--text-mute);">AWARA</div>
+  </div>
+
+  <div class="page-title">НАТАЛЬНАЯ КАРТА</div>
+  <div class="page-sub">КАРТА ТВОЕГО РОЖДЕНИЯ</div>
+
+  <div class="natal-card">
+    <div class="section-title">ДАННЫЕ РОЖДЕНИЯ</div>
+
+    <div class="form-group">
+      <label class="form-label" for="natal-date">ДАТА РОЖДЕНИЯ</label>
+      <input class="form-input" type="date" id="natal-date">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="natal-time">ВРЕМЯ РОЖДЕНИЯ</label>
+      <input class="form-input" type="time" id="natal-time" step="60">
+      <div class="form-hint">если точное время неизвестно, укажите приблизительное</div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="natal-city">ГОРОД РОЖДЕНИЯ</label>
+      <input class="form-input" type="text" id="natal-city" placeholder="например, Москва" autocomplete="off">
+      <div class="form-hint">в будущем будет подключено гео-автодополнение</div>
+    </div>
+
+    <button class="btn-calculate" id="btn-calc" onclick="saveAndCalculate()">
+      СОХРАНИТЬ ДАННЫЕ
+    </button>
+
+    <div class="saved-badge" id="saved-badge">ДАННЫЕ СОХРАНЕНЫ</div>
+  </div>
+
+  <div class="result-placeholder" id="result-block">
+    <div class="section-title">РАСЧЁТ НАТАЛЬНОЙ КАРТЫ</div>
+    <div class="result-text">
+      Расчёт натальной карты будет доступен в следующем обновлении.<br>
+      Планируется: 9 планет, 12 домов, лагна, накшатры, аспекты.<br>
+      Источник: Swiss Ephemeris.
+    </div>
+  </div>
+
+</div>
+
+<script>
+const STORAGE_KEY = 'awara_natal_data';
+
+function loadSavedData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (data.date) document.getElementById('natal-date').value = data.date;
+    if (data.time) document.getElementById('natal-time').value = data.time;
+    if (data.city) document.getElementById('natal-city').value = data.city;
+    document.getElementById('result-block').classList.add('visible');
+  } catch (e) { /* ignore corrupt data */ }
+}
+
+function saveAndCalculate() {
+  const date = document.getElementById('natal-date').value;
+  const time = document.getElementById('natal-time').value;
+  const city = document.getElementById('natal-city').value.trim();
+
+  if (!date) {
+    document.getElementById('natal-date').focus();
+    return;
+  }
+
+  const data = { date: date, time: time || null, city: city || null, savedAt: new Date().toISOString() };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+  const badge = document.getElementById('saved-badge');
+  badge.classList.add('visible');
+  setTimeout(function() { badge.classList.remove('visible'); }, 2500);
+
+  document.getElementById('result-block').classList.add('visible');
+}
+
+loadSavedData();
+</script>
+</body>
+</html>
